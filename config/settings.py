@@ -22,8 +22,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-change-in-prod
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
-ALLOWED_HOSTS = # config/settings.py
-ALLOWED_HOSTS = ['unihomes-backend.onrender.com', 'localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_raw.split(',') if host]
 
 # Application definition
 INSTALLED_APPS = [
